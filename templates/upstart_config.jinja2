@@ -1,4 +1,4 @@
-description "django-app"
+description "tictactoe"
 
 start on runlevel [2345]
 stop on runlevel [016]
@@ -8,9 +8,7 @@ respawn
 setuid nobody
 setgid www-data
 
-env ansible_ssh_private_key_file=~/.ssh/codefellows-aws-launch.pem
-
-FLASKS3_BUCKET_NAME='{{ FLASKS3_BUCKET_NAME }}'
+env FLASKS3_BUCKET_NAME='{{ FLASKS3_BUCKET_NAME }}'
 env AWS_ACCESS_KEY_ID='{{ AWS_ACCESS_KEY_ID }}'
 env AWS_SECRET_ACCESS_KEY='{{ AWS_SECRET_ACCESS_KEY }}'
 

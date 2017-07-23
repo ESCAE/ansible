@@ -1,2 +1,2 @@
 #dgango-imager
-$ansible-playbook -i hosts playbooks/django-project.yml
+$ansible-playbook -i hosts playbooks/flask-tac-toe.yml
