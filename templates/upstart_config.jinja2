@@ -8,7 +8,9 @@ respawn
 setuid nobody
 setgid www-data
 
-env AWS_STORAGE_BUCKET_NAME='{{ AWS_STORAGE_BUCKET_NAME }}'
+env ansible_ssh_private_key_file=~/.ssh/codefellows-aws-launch.pem
+
+FLASKS3_BUCKET_NAME='{{ FLASKS3_BUCKET_NAME }}'
 env AWS_ACCESS_KEY_ID='{{ AWS_ACCESS_KEY_ID }}'
 env AWS_SECRET_ACCESS_KEY='{{ AWS_SECRET_ACCESS_KEY }}'
 
