@@ -1,12 +1,10 @@
-- hosts: frontend
+- hosts: backend
   remote_user: ubuntu
   become: yes
   become_method: sudo
 
   environment:
-    FLASKS3_BUCKET_NAME: '{{ FLASKS3_BUCKET_NAME }}'
-    AWS_ACCESS_KEY_ID: '{{ AWS_ACCESS_KEY_ID }}'
-    AWS_SECRET_ACCESS_KEY: '{{ AWS_SECRET_ACCESS_KEY }}'
+    SECRET_KEY: '{{ SECRET_KEY }}'
 
   tasks:
     - name: Update the Ubuntu system and services
@@ -39,10 +37,10 @@
         - gunicorn
 
     - name: Clone the Book App to the Home Directory
-      git: clone=yes repo=https://github.com/ESCAE/tic-tac-toe-frontend.git dest=/home/ubuntu/tic-tac-toe-frontend version=ely-frontend-day1 force=yes
+      git: clone=yes repo=https://github.com/ESCAE/Django-RESTful-Backend.git version=master force=yes
 
     - name: Install app
-      pip: requirements=/home/ubuntu/tic-tac-toe-frontend/requirements.pip
+      pip: requirements=/home/ubuntu/Django-RESTful-Backend/requirements.pip
 
     - name: Register the old default file
       stat: path=/etc/nginx/sites-available/default.old
@@ -59,10 +57,7 @@
       service: name=nginx state=restarted
 
     - name: Copy upstart script into /etc/init
-      template: src=../templates/upstart_config.jinja2 dest=/etc/init/tictactoe.conf
+      template: src=../templates/upstart_config.jinja2 dest=/etc/init/django-backend.conf
 
     - name: Restart the app upstart job
-      service: name=tictactoe state=restarted
-
-    # - name: collectstatic
-    #   script: ./home/ubuntu/tic-tac-toe-frontend/collectstatic.py
+      service: name=django-backend state=restarted

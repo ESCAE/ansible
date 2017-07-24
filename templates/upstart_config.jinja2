@@ -12,6 +12,6 @@ env FLASKS3_BUCKET_NAME='{{ FLASKS3_BUCKET_NAME }}'
 env AWS_ACCESS_KEY_ID='{{ AWS_ACCESS_KEY_ID }}'
 env AWS_SECRET_ACCESS_KEY='{{ AWS_SECRET_ACCESS_KEY }}'
 
-chdir /home/ubuntu/tic-tac-toe-frontend/
+chdir /home/ubuntu/{{ APP }}/
 
-exec /usr/bin/gunicorn --bind 0.0.0.0:8000 tictac:app
+exec /usr/bin/gunicorn --bind 0.0.0.0:8000 {{ ENTRY }}
