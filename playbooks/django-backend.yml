@@ -37,7 +37,7 @@
         - gunicorn
 
     - name: Clone the Book App to the Home Directory
-      git: clone=yes repo=https://github.com/ESCAE/Django-RESTful-Backend.git dest=/home/ubuntu/Django-RESTful-Backend version=ely-deployment force=yes
+      git: clone=yes repo=https://github.com/ESCAE/Django-RESTful-Backend.git dest=/home/ubuntu/Django-RESTful-Backend version=master force=yes
 
     - name: Install app
       pip: requirements=/home/ubuntu/Django-RESTful-Backend/requirements.pip

@@ -39,7 +39,7 @@
         - gunicorn
 
     - name: Clone the Book App to the Home Directory
-      git: clone=yes repo=https://github.com/ESCAE/tic-tac-toe-frontend.git dest=/home/ubuntu/tic-tac-toe-frontend version=ely-frontend-day1 force=yes
+      git: clone=yes repo=https://github.com/ESCAE/tic-tac-toe-frontend.git dest=/home/ubuntu/tic-tac-toe-frontend version=ely-frontend-day2 force=yes
 
     - name: Install app
       pip: requirements=/home/ubuntu/tic-tac-toe-frontend/requirements.pip
