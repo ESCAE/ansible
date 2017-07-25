@@ -1,0 +1,14 @@
+description "Logic Tac Toe"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+
+respawn
+setuid nobody
+setgid www-data
+
+
+chdir /home/ubuntu/Django-RESTful-Backend/game_ai/game_ai
+
+exec /usr/bin/gunicorn wsgi:application

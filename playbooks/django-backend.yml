@@ -37,7 +37,7 @@
         - gunicorn
 
     - name: Clone the Book App to the Home Directory
-      git: clone=yes repo=https://github.com/ESCAE/Django-RESTful-Backend.git version=master force=yes
+      git: clone=yes repo=https://github.com/ESCAE/Django-RESTful-Backend.git dest=/home/ubuntu/Django-RESTful-Backend version=ely-deployment force=yes
 
     - name: Install app
       pip: requirements=/home/ubuntu/Django-RESTful-Backend/requirements.pip
@@ -57,7 +57,7 @@
       service: name=nginx state=restarted
 
     - name: Copy upstart script into /etc/init
-      template: src=../templates/upstart_config.jinja2 dest=/etc/init/django-backend.conf
+      template: src=../templates/upstart_back_config.jinja2 dest=/etc/init/django-backend.conf
 
     - name: Restart the app upstart job
       service: name=django-backend state=restarted

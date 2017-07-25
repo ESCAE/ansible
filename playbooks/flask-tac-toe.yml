@@ -59,10 +59,7 @@
       service: name=nginx state=restarted
 
     - name: Copy upstart script into /etc/init
-      template: src=../templates/upstart_config.jinja2 dest=/etc/init/tictactoe.conf
+      template: src=../templates/upstart_front_config.jinja2 dest=/etc/init/tictactoe.conf
 
     - name: Restart the app upstart job
       service: name=tictactoe state=restarted
-
-    # - name: collectstatic
-    #   script: ./home/ubuntu/tic-tac-toe-frontend/collectstatic.py
